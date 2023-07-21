@@ -1,0 +1,32 @@
+<h1>User List</h1>
+<script>
+    $(document).ready(function(){
+  $("#hide").click(function(){
+    $("p").hide();
+  });
+  $("#show").click(function(){
+    $("p").show();
+  });
+});
+</script>
+<p>If you click on the "Hide" button, I will disappear.</p>
+
+<button id="hide">Hide</button>
+<button id="show">Show</button>
+
+<br>
+    <%= link_to 'Create New User', new_user_path %> <br><br>
+    <%= paginate @users %>
+    <% @users.each do |user| %>
+        <%= user.id %> | 
+        <%= user.email %> | 
+        <%=  user.role%> | 
+        <%= link_to 'edit role', edit_user_path(user) %>
+        <br>
+
+    <br> 
+
+
+
+
+<% end %>
