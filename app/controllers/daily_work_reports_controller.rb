@@ -53,7 +53,8 @@ class DailyWorkReportsController < ApplicationController
         # @daily_work_report.current_date = Time.now
           if Project.exists?(params[:daily_work_report][:project_id])
             if @daily_work_report.save
-              if ! current_user.email_hierarchy == nil
+              # binding.pry
+              if not current_user.email_hierarchy == nil
                 DailyWorkReportMailer.new_work_report_notification(@daily_work_report).deliver_now
                 redirect_to daily_work_reports_path, notice: 'Daily work report was successfully created.'
               else
