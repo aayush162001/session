@@ -304,10 +304,27 @@ Devise.setup do |config|
   # Note: These might become the new default in future versions of Devise.
   config.responder.error_status = :unprocessable_entity
   config.responder.redirect_status = :see_other
-
+  # config.navigational_formats = [:json]
   # ==> Configuration for :registerable
 
   # When set to false, does not sign a user in automatically after their password is
   # changed. Defaults to true, so a user is signed in automatically after changing a password.
   # config.sign_in_after_change_password = true
 end
+# require 'devise/strategies/token_authenticatable'
+# module Devise
+#   module Strategies
+#     class TokenAuthenticatable < Authenticatable
+#       def params_auth_hash
+#         return_params = if params[scope].kind_of?(Hash) && params[scope].has_key?(authentication_keys.first)
+#             params[scope]
+#           else
+#             params
+#           end
+#         token = ActionController::HttpAuthentication::Token.token_and_options(request)
+#         return_params.merge!(:auth_token => token[0]) if token
+#         return_params
+#       end
+#     end
+#   end
+# end 
